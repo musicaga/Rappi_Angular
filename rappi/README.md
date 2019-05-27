@@ -1,4 +1,4 @@
-Para iniciar el proyecto 
+In the project directory, you can run:
 
 # npm install
 # ng serve
