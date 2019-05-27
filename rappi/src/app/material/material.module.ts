@@ -20,6 +20,7 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatCardModule} from '@angular/material/card';
 import {MatDialogModule} from '@angular/material/dialog';
+import {MatTableModule} from '@angular/material/table';
 
 
 
@@ -45,7 +46,8 @@ import {MatDialogModule} from '@angular/material/dialog';
     DragDropModule,
     MatGridListModule,
     MatCardModule,
-    MatDialogModule
+    MatDialogModule,
+    MatTableModule
   ]
 })
 export class MaterialModule { }

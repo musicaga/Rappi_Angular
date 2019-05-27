@@ -1,8 +1,13 @@
-<div fxLayout="row" fxLayoutAlign="center start" fxLayout.lt-sm="column" style="width: 100%;">
-  <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="40" fxFlex.lg="40" style="width: 100%; padding: 20px;">
-    <app-cart></app-cart>
+<mat-drawer-container  autosize style="height: 100%">
+  <mat-drawer #filters class="sidenav" mode="over">
+    <app-filters (toggle)="toggle($event)"></app-filters>
+  </mat-drawer>
+  <div fxLayout="row" fxLayoutAlign="center start" fxLayout.lt-sm="column">
+    <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="40" fxFlex.lg="40" style="width: 100%; padding: 20px;">
+      <app-cart></app-cart>
+    </div>
+    <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="60" fxFlex.lg="60" style="width: 100%; padding: 20px;">
+      <app-products (toggle)="toggle($event)"></app-products>
+    </div>
   </div>
-  <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="60" fxFlex.lg="60" style="width: 100%;">
-    <app-products></app-products>
-  </div>
-</div>
+</mat-drawer-container>

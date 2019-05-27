@@ -18,6 +18,7 @@ import { ProductsListComponent } from './components/products-list/products-list.
 import { ProductsContainerComponent } from './components/products-container/products-container.component';
 import { ProductsDialogComponent } from './components/products-dialog/products-dialog.component';
 import { SnackbarService } from 'src/app/services/snackbar.service';
+import { FiltersComponent } from './components/filters/filters.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { SnackbarService } from 'src/app/services/snackbar.service';
     CartComponent,
     ProductsListComponent,
     ProductsContainerComponent,
-    ProductsDialogComponent
+    ProductsDialogComponent,
+    FiltersComponent
   ],
   imports: [
     BrowserModule,

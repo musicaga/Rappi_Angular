@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatDrawer } from '@angular/material/sidenav';
 
 @Component({
   selector: 'app-pos',
@@ -6,10 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./pos.component.css']
 })
 export class PosComponent implements OnInit {
-
+  @ViewChild('filters') sidebar: MatDrawer;
   constructor() { }
 
   ngOnInit() {
   }
 
+  toggle() {
+    this.sidebar.toggle();
+  }
 }

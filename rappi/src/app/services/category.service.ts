@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { ProductService } from './product.service';
 import Categories from '../data/categories';
 
@@ -6,6 +6,14 @@ import Categories from '../data/categories';
   providedIn: 'root'
 })
 export class CategoryService {
+  load: EventEmitter<any> = new EventEmitter();
+  search = '';
+  filters = {
+    available: 'all_products',
+    quantity: 'any',
+    price: 'any',
+    sort: 'quantity'
+  }
 
   constructor(
     private productService: ProductService
@@ -15,9 +23,73 @@ export class CategoryService {
     return JSON.parse(JSON.stringify(Categories));
   }
 
+  setSearch(value) {
+    this.search = value;
+  }
+
+  setFilters(filters){
+    console.log(filters);
+    this.filters = filters;
+  }
+
+  clearFilters() {
+    this.filters = {
+      available: 'all_products',
+      quantity: 'any',
+      price: 'any',
+      sort: 'quantity'
+    }
+    this.search = '';
+  }
+
   getProductsByCategories() {
     let products = this.productService.getProducts();
     let categories = this.getCategories();
+    
+    // Available filter
+    products = this.filters.available === 'available'
+      ? products.filter(product => product.available)
+      : this.filters.available === 'no_available'
+        ? products.filter(product => !product.available)
+        : products;
+
+    // Quantity filter 
+    const quantityFilter = {
+      any: (prod) => prod,
+      to_0_100: (prod) => prod.filter(prodItem => prodItem.quantity <= 100),
+      to_100_200: (prod) => prod.filter(prodItem => prodItem.quantity > 100 && prodItem.quantity <= 200),
+      to_200_500: (prod) => prod.filter(prodItem => prodItem.quantity > 200 && prodItem.quantity <= 500),
+      to_500_1000: (prod) => prod.filter(prodItem => prodItem.quantity > 500 && prodItem.quantity <= 1000),
+      to_1000_0: (prod) => prod.filter(prodItem => prodItem.quantity > 100)
+    }
+
+    products = quantityFilter[this.filters.quantity](products);
+
+    // Price filter
+    const priceFilter = {
+      any: (prod) => prod,
+      to_0_5: (prod) => prod.filter(prodItem => prodItem.price <= 5.000),
+      to_5_10: (prod) => prod.filter(prodItem => prodItem.price > 5.000 && prodItem.price <= 10.000),
+      to_10_20: (prod) => prod.filter(prodItem => prodItem.price > 10.000 && prodItem.price <= 20.000),
+      to_20_0: (prod) => prod.filter(prodItem => prodItem.price > 20.000)
+    }
+
+    products = priceFilter[this.filters.price](products);
+    
+    // Search
+    products = products.filter(product => {
+      const termRegular = new RegExp(this.search, 'gi');
+      return product.name.match(termRegular)
+    })
+
+    // Sort 
+    const sort = this.filters.sort;
+    products = products.sort(function (a, b) {
+      if (Number(a[sort]) > Number(b[sort])) return -1;
+      if (Number(a[sort]) < Number(b[sort])) return 1;
+      return 0;
+    });
+
     products.forEach(product => {
       const subLevel = product.sublevel_id;
       categories.forEach(category => {

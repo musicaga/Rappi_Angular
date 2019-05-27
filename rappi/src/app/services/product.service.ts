@@ -6,8 +6,7 @@ import { IProduct } from '../interfaces/product';
   providedIn: 'root'
 })
 export class ProductService {
-
-  constructor() {}
+  constructor() { }
 
   getProducts() {
     const products: IProduct[] = JSON.parse(JSON.stringify(Products));

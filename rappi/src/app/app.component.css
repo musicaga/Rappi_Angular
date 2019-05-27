@@ -6,15 +6,6 @@
     max-height: 100%;
 }
 
-.container {
-	height: 92%;
-}
-
-.sidenav {
-	width: 300px;
-	padding: 20px;
-}
-
 .sidenav p {
     cursor: pointer;
 }

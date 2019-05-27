@@ -1,0 +1,38 @@
+<div fxLayout="column">
+  <h2 class="title">Filters</h2>
+  <form UserForm [formGroup]="filters">
+    <mat-form-field appearance="outline">
+      <mat-label>Available</mat-label>
+      <mat-select placeholder="Available" formControlName="available" [compareWith]="compareFn">
+        <mat-option *ngFor="let available of availableOptions" [value]="available.value">
+          {{available.key}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Quantity</mat-label>
+      <mat-select placeholder="Quantity" formControlName="quantity" [compareWith]="compareFn">
+        <mat-option *ngFor="let quantity of quantityOptions" [value]="quantity.value">
+          {{quantity.key}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Price</mat-label>
+      <mat-select placeholder="Price" formControlName="price" [compareWith]="compareFn">
+        <mat-option *ngFor="let price of priceOptions" [value]="price.value">
+          {{price.key}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Sort</mat-label>
+      <mat-select placeholder="Sort" formControlName="sort" [compareWith]="compareFn">
+        <mat-option *ngFor="let sort of sortOptions" [value]="sort.value">
+          {{sort.key}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <button (click)="done()" mat-flat-button color="primary" style="width: 100%">Done</button>
+  </form>
+</div>

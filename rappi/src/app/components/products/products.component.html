@@ -1,1 +1,14 @@
+<div fxLayout="row" fxLayoutAlign="start center">
+    <div fxFlex="80">
+        <mat-form-field class="example-form-field" appearance="outline" style="width: 100%">
+            <mat-label>Search by name</mat-label>
+            <input matInput placeholder="Search" [formControl]="search" (keydown.enter)="$event.preventDefault(); $event.stopPropagation()">
+        </mat-form-field>
+    </div>
+    <button mat-icon-button color="primary" (click)="toggleAction()">
+        <mat-icon>settings</mat-icon>
+    </button>
+</div>
+
 <app-products-container [categoriesList]="categoriesList"></app-products-container>
+<div fxLayout="row" fxLayoutAlign="center center"*ngIf="!categoriesList.length">No products available</div>
