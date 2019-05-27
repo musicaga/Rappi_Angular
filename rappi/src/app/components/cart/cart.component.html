@@ -1,0 +1,21 @@
+<div class="cart-container">
+  <div class="cart-main" fxLayout="row" fxLayoutAlign="center center">
+    <span>Cart</span>
+    <!-- <span>2</span>
+    <span>3</span> -->
+  </div>
+  <div class="cart-content">
+    <div *ngFor="let orderItem of order.orderItems" fxLayout="row" class="cart-item">
+      <span fxFlex="10" style="color: #c2185b;">{{orderItem.order_item_quantity}}</span>
+      <span fxFlex>{{orderItem.product.name}}</span>
+      <span fxFlex>${{(orderItem.order_item_quantity*orderItem.product.price).toFixed(2)}}</span>
+      <mat-icon fxFlex="10" color="primary" (click)="editOrderItem(orderItem)">edit</mat-icon>
+      <mat-icon fxFlex="10" style="color: rgb(208, 2, 27);" (click)="deleteOrderItem(orderItem)">close</mat-icon>
+    </div>
+    <div *ngIf="order.total && order.status === 'PENDING'" class="cart-total" fxLayout="row" fxLayoutAlign="space-between center">
+      <span>Total:</span>
+      <span style="color: #c2185b;">${{order.total}}</span>
+    </div>
+  </div>
+  <button *ngIf="order.status === 'PENDING'" (click)="payOrder()" mat-flat-button color="primary" style="width: 100%">Pay</button>
+</div>

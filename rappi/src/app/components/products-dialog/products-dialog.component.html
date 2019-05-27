@@ -1,0 +1,17 @@
+<div>
+  <div mat-dialog-title fxLayout="row" fxLayoutAlign="center center">
+    <h3 class="title">{{data.product.name}}</h3>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="center center">
+    <mat-form-field class="example-form-field" appearance="outline" style="width: 100%">
+      <mat-label>Quantity</mat-label>
+      <input matInput placeholder="Quantity" [formControl]="quantity" (keydown.enter)="$event.preventDefault(); $event.stopPropagation()">
+    </mat-form-field>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="center center">
+    <button mat-flat-button color="primary" (click)="addProduct()" *ngIf="!loading">
+      {{!data.order_item_id ? 'Add' : 'Edit'}}
+    </button>
+    <mat-spinner diameter="30" *ngIf="loading" style="margin: 10px;"></mat-spinner>
+  </div>
+</div>

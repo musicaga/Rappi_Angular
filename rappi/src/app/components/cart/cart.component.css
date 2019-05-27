@@ -1,0 +1,38 @@
+.cart-container {
+    width: 100%;
+}
+
+.cart-container mat-icon {
+    cursor: pointer;
+}
+
+.cart-main {
+    width: 100%;
+    background: #c2185b;
+    color: white;
+    font-weight: 600;
+    height: 50px;
+    padding: 0 10px
+}
+
+.cart-content {
+    min-height: 100px;
+    border: 1px solid #c2185b;
+    padding: 10px 5px 20px 5px;
+    margin-bottom: 20px;
+    background: white;
+    color: black;
+}
+
+.cart-item {
+    height: 36px;
+    margin: 5px;
+}
+
+.cart-total{
+    background: #e7e7e7;
+    margin-top: 20px;
+    font-size: 22px;
+    height: 40px;
+    padding: 0 10px;
+}

@@ -1,0 +1,58 @@
+.galleryContainer .cdkItem {
+    height: 200px;
+    width: 100%;
+}
+.galleryContainer .cdkItem .cdk-virtual-scroll-content-wrapper {
+    display: flex;
+    flex-direction: row;
+}
+
+.card {
+    width: 150px;
+    height: 170px;
+    overflow: hidden;
+    text-align: center;
+    float: left;
+    margin: 5px;
+    border: 1px solid #c8ced3;
+    border-radius: 5px;
+    box-shadow: 0 10px 6px -6px #777;
+    position: relative;
+}
+
+.card p {
+    margin: 5px;
+}
+
+.card-img {
+    width: 100%;
+    height: 100%;
+    transform: scale(1.1);
+    border-radius: 4px;
+}
+
+.card-content {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.7);
+    text-align: center;
+    border-radius: 4px;
+    top: 1px;
+}
+
+.card-title {
+    color: #faa9c9;
+    margin: 10px;
+}
+
+.card .available {
+    color: #8bc34a;
+    font-weight: 500;
+}
+
+.card-button {
+    position: absolute;
+    bottom: 0;
+    right: 50px;
+}

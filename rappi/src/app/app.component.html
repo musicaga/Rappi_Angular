@@ -1,0 +1,17 @@
+<div class="app">
+  <mat-toolbar fxLayout="row" fxLayoutAlign="start center" color="primary">
+      <button type="button" mat-button (click)="sidebar.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span>El Baratón Angular</span>
+    </mat-toolbar>
+  <mat-drawer-container class="container" autosize>
+    <mat-drawer #drawer class="sidenav" mode="over">
+      <p (click)="goto('pos')">Pos</p>
+      <p (click)="goto('orders')">Orders</p>
+      <p>Products</p>
+      <p>Categories</p>
+    </mat-drawer>
+    <router-outlet></router-outlet>
+  </mat-drawer-container>
+</div>

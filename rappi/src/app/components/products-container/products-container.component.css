@@ -1,0 +1,23 @@
+.products-container {
+    padding: 20px
+}
+.level-1 {
+    padding: 0 10px 0 10px;
+}
+
+.level-label {
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.level-2 {
+    padding: 5px 0 0 20px;
+}
+
+.level-3 {
+    padding: 5px 0 0 40px;
+}
+
+.level-4 {
+    padding: 5px 0 0 60px;
+}
