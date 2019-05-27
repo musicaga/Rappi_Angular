@@ -15,8 +15,8 @@ export class ProductsDialogComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<ProductsDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: IOrderItem
-  ) { 
-    this.quantity = new FormControl(this.data.order_item_quantity);
+  ) {
+    this.quantity = new FormControl(String(this.data.order_item_quantity));
   }
 
   ngOnInit() {
@@ -27,11 +27,13 @@ export class ProductsDialogComponent implements OnInit {
   }
 
   addProduct() {
-    this.data.order_item_quantity = Number(this.quantity.value);
-    this.loading = true;
-    setTimeout(()=> {
-      this.loading = false;
-      this.dialogRef.close(this.data);
-    }, 400)
+    if (this.quantity.value !== '0') {
+      this.data.order_item_quantity = Number(this.quantity.value);
+      this.loading = true;
+      setTimeout(() => {
+        this.loading = false;
+        this.dialogRef.close(this.data);
+      }, 400)
+    }
   }
 }
