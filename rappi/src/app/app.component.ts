@@ -1,6 +1,12 @@
 import { Component, ViewChild } from '@angular/core';
 import { MatDrawer } from '@angular/material/sidenav';
-import { Router } from '@angular/router';
+import { Router, Route } from '@angular/router';
+
+interface IRoute {
+  name: string;
+  path: string;
+  icon: string;
+}
 
 @Component({
   selector: 'app-root',
@@ -9,13 +15,25 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
   @ViewChild('drawer') sidebar: MatDrawer;
-  title = 'rappi';
+  routes: IRoute[] = [];
   constructor(
     private router: Router
-  ){}
+  ) {
+    this.routes = [
+      {
+        name: 'Pos',
+        path: '/pos',
+        icon: 'shopping_cart'
+      },
+      {
+        name: 'Orders',
+        path: '/orders',
+        icon: 'list'
+      }
+    ]
+  }
 
-  goto(route: string) {
-    this.router.navigate([route]);
+  goto() {
     this.sidebar.toggle();
   }
 }

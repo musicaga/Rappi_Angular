@@ -3,22 +3,25 @@
     <div class="level-1">
       <span class="level-label">{{category.name}}</span>
       <div *ngFor="let firstLevel of category.sublevels">
-          <div class="level-2">
-              <span class="level-label">{{firstLevel.name}}</span>
-              <app-products-list *ngIf="firstLevel.products" [products]="firstLevel.products"></app-products-list>
-              <div *ngIf="firstLevel.sublevels" class="level-3"> 
-                <div *ngFor="let secondLevel of firstLevel.sublevels">
-                    <span class="level-label">{{secondLevel.name}}</span>
-                    <app-products-list *ngIf="secondLevel.products" [products]="secondLevel.products"></app-products-list>
-                    <div *ngIf="secondLevel.sublevels" class="level-4">
-                      <div *ngFor="let lastLevel of secondLevel.sublevels">
-                          <span class="level-label">{{lastLevel.name}}</span>
-                          <app-products-list *ngIf="lastLevel.products" [products]="lastLevel.products"></app-products-list>
-                      </div>
-                    </div>
+        <div class="level-2">
+          <span class="level-label">{{firstLevel.name}}</span>
+          <span class="level-quantity">( {{firstLevel.products ? firstLevel.products.length : 0}} )</span>
+          <app-products-list *ngIf="firstLevel.products" [products]="firstLevel.products"></app-products-list>
+          <div *ngIf="firstLevel.sublevels" class="level-3">
+            <div *ngFor="let secondLevel of firstLevel.sublevels">
+              <span class="level-label">{{secondLevel.name}}</span>
+              <span class="level-quantity">( {{secondLevel.products ? secondLevel.products.length : 0}} )</span>
+              <app-products-list *ngIf="secondLevel.products" [products]="secondLevel.products"></app-products-list>
+              <div *ngIf="secondLevel.sublevels" class="level-4">
+                <div *ngFor="let lastLevel of secondLevel.sublevels">
+                  <span class="level-label">{{lastLevel.name}}</span>
+                  <span class="level-quantity">( {{lastLevel.products ? lastLevel.products.length: 0}} )</span>
+                  <app-products-list *ngIf="lastLevel.products" [products]="lastLevel.products"></app-products-list>
                 </div>
               </div>
+            </div>
           </div>
+        </div>
       </div>
     </div>
   </div>

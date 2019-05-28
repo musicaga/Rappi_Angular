@@ -4,6 +4,7 @@ import { ICategory } from '../../interfaces/category';
 import { FormControl } from '@angular/forms';
 import { debounceTime } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
+import { IProduct } from '../../interfaces/product';
 
 @Component({
   selector: 'app-products',
@@ -12,8 +13,11 @@ import { Subscription } from 'rxjs';
 })
 export class ProductsComponent implements OnInit {
   private subscriptions: Subscription[] = [];
+  public loading: boolean = false;
   search = new FormControl();
   categoriesList: ICategory[] = [];
+  products: IProduct[] = [];
+  list = false;
   @Output() toggle: EventEmitter<any> = new EventEmitter();
   constructor(
     private categoryService: CategoryService
@@ -29,14 +33,24 @@ export class ProductsComponent implements OnInit {
       })
 
     this.subscriptions.push(
-      this.categoryService.load.subscribe( () => {
+      this.categoryService.load.subscribe(() => {
         this.loadCategories()
       })
     );
   }
 
   loadCategories() {
-    this.categoriesList = this.categoryService.getProductsByCategories();
+    this.loading = true;
+    setTimeout(() => {
+      const data = this.categoryService.getProductsByCategories();
+      this.categoriesList = data.categories;
+      this.products = data.products;
+      this.loading = false;
+    }, 400);
+  }
+
+  togglelist() {
+    this.list = !this.list;
   }
 
   toggleAction() {

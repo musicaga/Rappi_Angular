@@ -11,7 +11,7 @@ export class ProductService {
   getProducts() {
     const products: IProduct[] = JSON.parse(JSON.stringify(Products));
     return products.map(product => {
-      const price = product.price.split('$')[1].replace(/[,]+/g, '.');
+      const price = String(product.price).split('$')[1].replace(/[,]+/g, '.');
       return {
         ...product,
         price: Number(price)

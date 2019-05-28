@@ -122,6 +122,9 @@ export class CategoryService {
         })
       })
     })
-    return !products.length ? [] : categories;
+    return {
+      categories: !products.length ? [] : categories,
+      products
+    }
   }
 }

@@ -9,3 +9,12 @@
 .sidenav p {
     cursor: pointer;
 }
+
+.sidenav mat-icon {
+    margin-right: 15px;
+}
+
+.active-route {
+    color: #c2185b !important;
+    border: none !important;
+}

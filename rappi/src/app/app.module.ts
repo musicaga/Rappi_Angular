@@ -19,6 +19,8 @@ import { ProductsContainerComponent } from './components/products-container/prod
 import { ProductsDialogComponent } from './components/products-dialog/products-dialog.component';
 import { SnackbarService } from 'src/app/services/snackbar.service';
 import { FiltersComponent } from './components/filters/filters.component';
+import { ProductsModuleComponent } from './components/products-module/products-module.component';
+import { LoadingComponent } from './components/loading/loading.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import { FiltersComponent } from './components/filters/filters.component';
     ProductsListComponent,
     ProductsContainerComponent,
     ProductsDialogComponent,
-    FiltersComponent
+    FiltersComponent,
+    ProductsModuleComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,

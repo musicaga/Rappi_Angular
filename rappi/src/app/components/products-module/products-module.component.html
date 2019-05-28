@@ -1,0 +1,14 @@
+<div>
+  <div class="card" *ngFor="let item of products">
+    <img class="card-img" src="assets/product.png">
+    <div class="card-content">
+      <h3 class="card-title">{{item.name}}</h3>
+      <p>Price: <span>${{item.price}}</span></p>
+      <p>Quantity: <span>{{item.quantity}}</span></p>
+      <p *ngIf="item.available" class="available">Available</p>
+      <button (click)="addProduct(item)" class="card-button" mat-icon-button color="primary">
+        <mat-icon>add_circle_outline</mat-icon>
+      </button>
+    </div>
+  </div>
+</div>

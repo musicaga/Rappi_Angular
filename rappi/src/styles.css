@@ -9,6 +9,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 }
 
 .sidenav {
-	width: 300px;
+	width: 240px;
 	padding: 20px;
+}
+
+.ng-star-inserted {
+    border: none !important;
 }

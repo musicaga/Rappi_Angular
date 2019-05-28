@@ -1,8 +1,9 @@
 <div fxLayout="row" fxLayoutAlign="center center">
-        <h2>Orders</h2>
-    </div>
+    <h2>Products</h2>
+</div>
+
 <div fxLayout="row" fxLayoutAlign="start center">
-    <div fxFlex="80">
+    <div fxFlex="70">
         <mat-form-field class="example-form-field" appearance="outline" style="width: 100%">
             <mat-label>Search by name</mat-label>
             <input matInput placeholder="Search" [formControl]="search" (keydown.enter)="$event.preventDefault(); $event.stopPropagation()">
@@ -11,7 +12,19 @@
     <button mat-icon-button color="primary" (click)="toggleAction()">
         <mat-icon>settings</mat-icon>
     </button>
+    <button mat-icon-button color="primary" (click)="togglelist()">
+        <mat-icon *ngIf="list">list</mat-icon>
+        <mat-icon *ngIf="!list">view_module</mat-icon>
+    </button>
 </div>
 
-<app-products-container [categoriesList]="categoriesList"></app-products-container>
-<div fxLayout="row" fxLayoutAlign="center center"*ngIf="!categoriesList.length">No products available</div>
+<div *ngIf="!loading">
+    <app-products-module *ngIf="list" [products]="products"></app-products-module>
+    <app-products-container *ngIf="!list" [categoriesList]="categoriesList"></app-products-container>
+</div>
+
+<div *ngIf="loading">
+    <app-loading></app-loading>
+</div>
+
+<div fxLayout="row" fxLayoutAlign="center center" *ngIf="!products.length && !loading">No products available</div>
